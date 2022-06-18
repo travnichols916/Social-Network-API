@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
 
-const ThoughtSchema = new Schema(
+const thoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
@@ -66,13 +65,6 @@ const ReactionSchema = new Schema(
   }
 )
 
-// Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
-ThoughtSchema.virtual('reactionCount').get(function() {
-  return this.user.reduce(
-    (total, user) => total + reactions.length + 1,
-    0
-  );
-});
 
 
 const Thought = model('Thought', thoughtSchema);

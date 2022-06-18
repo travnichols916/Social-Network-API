@@ -1,7 +1,6 @@
 const { Schema, model, Types } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
 
-const UserSchema = new Schema(
+const userSchema = new Schema(
   {
     username: {
       type: String,
@@ -45,12 +44,3 @@ userSchema.virtual('totalNumberOfFriends')
 const User = model('User', userSchema);
 
 module.exports = User
-
-
-// UserSchema.virtual('replyCount').get(function() {
-//   return this.replies.length;
-// });
-
-// const Comment = model('Comment', UserSchema);
-
-// module.exports = Comment;
